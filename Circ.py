@@ -87,10 +87,10 @@ class Circ:
 		#self.fuzzy["AND"] = [3, ["pr,pv", "h,3", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		self.fuzzy["OR"] = [3, ["pr,pv", "p,1", "p,2", "pr,pos", "t,1,2,3", "p,3", "pr,pos", "m2,3"], entradaFuzzy]
 
-		entradaClassica = "x,x,y,0"
+		entradaClassica = "x,x,0,y"
 		self.entradaClassica = {}
 		self.fuzzy["Circ1"] = [3, ["pr,pv", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaClassica]
-		self.fuzzy["Circ2"] = [5, ["pr,pv", "t,1,2,3", "pr,pos", "c,3,5", "pr,pos", "c,4,5", "pr,pos", "m2,5"], entradaClassica]
+		self.fuzzy["Circ2"] = [5, ["pr,pv", "t,1,2,3", "pr,pos", "c,4,5", "pr,pos", "c,3,5", "pr,pos", "m2,5"], entradaClassica]
 
 		entradaDuplicada = "x,y,x,y"
 		self.entradaDuplicada = {}
