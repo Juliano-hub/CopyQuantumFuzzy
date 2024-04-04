@@ -80,26 +80,25 @@ class Circ:
 		entradaFuzzy = "x,y"
 		#circuitos fuzzy
 		self.fuzzy = {}
-		self.fuzzy["CCNOT"] = [7, ["pr,pv", "t,1,2,5", "pr,pos", "p,4", "t,3,4,6", "pr,pos", "c,6,7", "pr,pos", "c,5,7","pr,pos", "m2,7"], entradaFuzzy]
 		self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m1,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "h,3", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		self.fuzzy["OR"] = [3, ["pr,pv", "p,1", "p,2", "pr,pos", "t,1,2,3", "p,3", "pr,pos", "m2,3"], entradaFuzzy]
 
+
+		entradaQuiskit = "x,x,0,y,y,0"
+		self.fuzzy["CCNOT"] = [7, ["pr,pv", "t,1,2,5", "pr,pos", "p,4", "t,3,4,6", "pr,pos", "c,6,7", "pr,pos", "c,5,7","pr,pos", "m2,7"], entradaQuiskit]
+
 		entradaClassica = "x,x,0,y"
-		self.entradaClassica = {}
 		self.fuzzy["Circ1"] = [3, ["pr,pv", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaClassica]
 		self.fuzzy["Circ2"] = [5, ["pr,pv", "t,1,2,3", "pr,pos", "c,4,5", "pr,pos", "c,3,5", "pr,pos", "m2,5"], entradaClassica]
 
 		entradaDuplicada = "x,y,x,y"
-		self.entradaDuplicada = {}
 		self.fuzzy["XORVEZES"] = [7, ["pr,pv", "p,1", "p,2", "t,1,2,5", "p,1", "p,2", "p,5", "t,3,4,6", "p,6", "t,5,6,7", "pr,pos", "m2,7"], "x,y,x,y"]
 		self.fuzzy["eXorCoIMP-"] = [8, ["pr,pv", "t,1,2,4", "p,3", "p,4", "pr,pos", "t,3,4,5", "p,3", "t,1,2,6", "pr,pos", "t,3,6,7", "p,5", "p,7", "pr,pos", "t,5,7,8", "p,8" , "pr,pos", "m2,7"], entradaDuplicada]
 		
 		entradaFuzzySquare = "x,x,y,y"
-		self.entradaFuzzySquare = {}
-		#self.fuzzySquare["CCNOT"] = [7, ["pr,pv", "t,1,2,5", "t,3,4,6", "c,6,7", "c,5,7", "m2,7"], entradaFuzzySquare]
 		self.fuzzy["AND"] = [7, ["pr,pv", "t,1,2,5", "t,3,4,6", "pr,pos", "t,5,6,7", "pr,pos", "m2,7"], entradaFuzzySquare]
 		self.fuzzy["OR"] = [7, ["pr,pv", "t,1,2,5", "t,3,4,6", "pr,pos", "p,5", "p,6", "t,5,6,7", "p,5", "p,6", "p,7", "pr,pos", "m2,7"], entradaFuzzySquare]
 		self.fuzzy["testeOverlap"] = [7, ["pr,pv", "t,1,2,5", "pr,pos", "t,3,4,6", "pr,pos", "t,5,6,7", "pr,pos", "m2,7"], entradaFuzzySquare]
