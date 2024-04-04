@@ -12,6 +12,7 @@ operator = sys.argv[1]
 #circuit = circ.fuzzySquare.get(operator)
 #circuit =circ.intFuzzy.get(operator)
 circuit = circ.fuzzy.get(operator)
+#circuit = circ.entradaClassica.get(operator)
 
 if circuit == None:
 	print ("Operador não encontrado", operator)
