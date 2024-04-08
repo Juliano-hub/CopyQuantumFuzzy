@@ -88,7 +88,7 @@ class Circ:
 
 
 		entradaQuiskit = "x,x,0,y,y,0"
-		self.fuzzy["CCNOT"] = [7, ["pr,pv", "t,1,2,5", "pr,pos", "p,4", "t,3,4,6", "pr,pos", "c,6,7", "pr,pos", "c,5,7","pr,pos", "m2,7"], entradaQuiskit]
+		self.fuzzy["CCNOT"] = [7, ["pr,pv", "t,1,2,3", "pr,pos", "p,5", "t,4,5,6", "p,5", "pr,pos", "c,6,7", "pr,pos", "c,3,7","pr,pos", "m2,7"], entradaQuiskit]
 
 		entradaClassica = "x,x,0,y"
 		self.fuzzy["Circ1"] = [3, ["pr,pv", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaClassica]
