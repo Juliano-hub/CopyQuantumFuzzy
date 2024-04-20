@@ -80,12 +80,15 @@ class Circ:
 		entradaFuzzy = "x,y"
 		#circuitos fuzzy
 		self.fuzzy = {}
-		self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m1,3"], entradaFuzzy]
+		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m1,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "h,3", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		self.fuzzy["OR"] = [3, ["pr,pv", "p,1", "p,2", "pr,pos", "t,1,2,3", "p,3", "pr,pos", "m2,3"], entradaFuzzy]
-
+		#self.fuzzy["CircFamilia1"] = [3, ["pr,pv", "pr,pos", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
+		#self.fuzzy["CircFamilia2"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
+		#self.fuzzy["CircFamilia3"] = [3, ["pr,pv", "pr,pos", "p,2", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
+		#self.fuzzy["CircFamilia4"] = [3, ["pr,pv", "pr,pos", "p,1", "p,2", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 
 		entradaQuiskit = "x,x,0,y,y,0"
 		self.fuzzy["CCNOT"] = [7, ["pr,pv", "t,1,2,3", "pr,pos", "p,5", "t,4,5,6", "p,5", "pr,pos", "c,6,7", "pr,pos", "c,3,7","pr,pos", "m2,7"], entradaQuiskit]
