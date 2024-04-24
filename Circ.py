@@ -84,6 +84,7 @@ class Circ:
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "h,3", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
+		self.fuzzy["AND"] = [2, ["pr,pv", "pr,pos", "vGate,1,2", "pr,pos", "m2,2"], entradaFuzzy]
 		self.fuzzy["OR"] = [3, ["pr,pv", "p,1", "p,2", "pr,pos", "t,1,2,3", "p,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["CircFamilia1"] = [3, ["pr,pv", "pr,pos", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["CircFamilia2"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
@@ -102,8 +103,8 @@ class Circ:
 		self.fuzzy["eXorCoIMP-"] = [8, ["pr,pv", "t,1,2,4", "p,3", "p,4", "pr,pos", "t,3,4,5", "p,3", "t,1,2,6", "pr,pos", "t,3,6,7", "p,5", "p,7", "pr,pos", "t,5,7,8", "p,8" , "pr,pos", "m2,7"], entradaDuplicada]
 		
 		entradaFuzzySquare = "x,x,y,y"
-		self.fuzzy["AND"] = [7, ["pr,pv", "t,1,2,5", "t,3,4,6", "pr,pos", "t,5,6,7", "pr,pos", "m2,7"], entradaFuzzySquare]
-		self.fuzzy["OR"] = [7, ["pr,pv", "t,1,2,5", "t,3,4,6", "pr,pos", "p,5", "p,6", "t,5,6,7", "p,5", "p,6", "p,7", "pr,pos", "m2,7"], entradaFuzzySquare]
+		self.fuzzy["ANDS"] = [7, ["pr,pv", "t,1,2,5", "t,3,4,6", "pr,pos", "t,5,6,7", "pr,pos", "m2,7"], entradaFuzzySquare]
+		self.fuzzy["ORS"] = [7, ["pr,pv", "t,1,2,5", "t,3,4,6", "pr,pos", "p,5", "p,6", "t,5,6,7", "p,5", "p,6", "p,7", "pr,pos", "m2,7"], entradaFuzzySquare]
 		self.fuzzy["testeOverlap"] = [7, ["pr,pv", "t,1,2,5", "pr,pos", "t,3,4,6", "pr,pos", "t,5,6,7", "pr,pos", "m2,7"], entradaFuzzySquare]
 		self.fuzzy["testegrouping"] = [7, ["pr,pv", "p,1", "p,2", "t,1,2,5", "p,1", "p,2", "pr,pos", "p,3", "p,4","t,3,4,6", "p,3", "p,4", "pr,pos", "t,5,6,7", "pr,pos", "p,7", "pr,pos", "m2,7"], entradaFuzzySquare]
 		self.fuzzy["-"] = [9, ["pr,pv", "p,1", "p,2", "t,1,2,5", "p,1", "p,2", "p,3", "p,4","t,3,4,6", "p,3", "p,4", "pr,pos", "t,5,6,8", "pr,pos", "p,8", "pr,pos", "t,1,2,5", "t,3,4,6", "pr,pos", "t,5,6,7", "pr,pos", "t,7,8,9", "m2,9"], entradaFuzzySquare]
@@ -358,6 +359,27 @@ class Circ:
 
 		return positions
 
+	def vGate(self, positions, control, target):
+		j = (-1)**(1/2)
+		sqrtvar = [[1+j, -1+j], [-1+j, 1+j]]
+		
+		for p in positions:
+			if p[control] == "1":
+				#for p in positions:
+					if p[target] == "1":
+						p[target] = str(sqrtvar[0])
+					else:
+						p[target] = str(sqrtvar[1])
+		#print('aqq----------')
+		#for p in positions:
+		#	print(p[control])
+		#print('aqq2----------')
+		#for p in positions:
+		#	print(p[target])
+		#print(target)
+		#print('aqqqq*---------')
+		return positions
+
 	def toffoli(self, positions, control1, control2, target):
 		for p in positions:
 			if p[control1] == "1" and p[control2] == "1":
@@ -456,6 +478,8 @@ class Circ:
 				pos = self.toffoli(pos, int(par[1])-b, int(par[2])-b, int(par[3])-b)
 			elif par[0] == "t00":
 				pos = self.toffoli00(pos, int(par[1])-b, int(par[2])-b, int(par[3])-b)
+			elif par[0] == "vGate":
+				pos = self.vGate(pos, int(par[1])-b, int(par[2])-b)
 			elif par[0] == "m":
 				m = self.measure(pos, val, int(par[1])-b, int(par[2]))
 			elif par[0] == "m2":
@@ -585,6 +609,19 @@ class Circ:
 				output = output + "\n\\draw[-]      (q{}_{}) -- (q{}_{});".format(idx1, col, idx2, col)
 
 				col+=1
+			if op == "vGate":
+				output = output + "\n% Column {}".format(col)
+
+				idx1, idx2 = arg[0], arg[1]
+
+				output = output + "\n\\node[bullet] (q{}_{}) at ({},{}) {{}} edge [-] (q{}_{});".format(idx1, col, col*x, y*(-(idx1-1)), idx1, l[idx1-1])
+				l[idx1-1] = col
+				output = output + "\n\\node[V]    (q{}_{}) at ({},{}) {{}} edge [-] (q{}_{});".format(idx2, col, col*x, y*(-(idx2-1)), idx2, l[idx2-1])
+				l[idx2-1] = col
+
+				output = output + "\n\\draw[-]      (q{}_{}) -- (q{}_{});".format(idx1, col, idx2, col)
+
+				col+=1
 
 		#\draw[dashed] (2.25,0.25) -- (2.25,-7);
 		#\node at (2.25,-7.25) {\footnotesize{T1}};
@@ -632,6 +669,9 @@ class Circ:
 			if s[0] == "c":
 				j = ",".join(s[1])
 				formula.append("c^{"+j+"}_{"+ s[2]+"}")	
+			if s[0] == "vGate":
+				j = ",".join(s[1])
+				formula.append("V^{"+j+"}_{"+ s[2]+"}")	
 			#print(formula)
 		
 		return (" \circ ".join(reversed(formula)))
