@@ -85,7 +85,7 @@ class Circ:
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "h,3", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
-		self.fuzzy["AND"] = [2, ["pr,pv", "pr,pos", "vGate,1,2", "pr,pos", "m2,2"], entradaFuzzy]
+		self.fuzzy["AND"] = [2, ["pr,pv", "pr,pos", "vGate,1,2", "pr,pv", "pr,pos", "m2,2"], entradaFuzzy]
 		self.fuzzy["OR"] = [3, ["pr,pv", "p,1", "p,2", "pr,pos", "t,1,2,3", "p,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["CircFamilia1"] = [3, ["pr,pv", "pr,pos", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["CircFamilia2"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
@@ -363,10 +363,18 @@ class Circ:
 	def vGate(self, positions, values, control, target):
 		j = floor((-1)**(1/2))
 		sqrtvar = [[(1+j)/2, (-1+j)/2], [(-1+j)/2, (1+j)/2]]
+		
+		#Retorna o qubit do alvo
+		#for p in range(0, len(positions)):
+		#	if positions[p][control] == "1":
+		#		print( positions[p][control])
+		#		positions[p][target]
+  
+		#Retorna as amplitudes do qubit alvo
 		for p in range(0, len(positions)):
 			if positions[p][control] == "1":
-				print(sqrtvar[target])
-				print(values[p])
+					print(values[p])
+					
 				#values[p] = "-" + values[p]
 		return positions, values
 
@@ -469,7 +477,7 @@ class Circ:
 			elif par[0] == "t00":
 				pos = self.toffoli00(pos, int(par[1])-b, int(par[2])-b, int(par[3])-b)
 			elif par[0] == "vGate":
-				pos = self.vGate(pos, val, int(par[1])-b, int(par[2])-b)
+				pos, val = self.vGate(pos, val, int(par[1])-b, int(par[2])-b)
 			elif par[0] == "m":
 				m = self.measure(pos, val, int(par[1])-b, int(par[2]))
 			elif par[0] == "m2":
