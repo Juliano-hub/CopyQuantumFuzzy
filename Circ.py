@@ -362,20 +362,29 @@ class Circ:
 
 	def vGate(self, positions, values, control, target):
 		j = floor((-1)**(1/2))
-		sqrtvar = [[(1+j)/2, (-1+j)/2], [(-1+j)/2, (1+j)/2]]
+		sqrtvar = [(1+j)/2, (-1+j)/2], [(-1+j)/2, (1+j)/2]
+		sqr1 = [(1+j)/2, (-1+j)/2]
+		sqr2 = [(-1+j)/2, (1+j)/2]
 		
 		#Retorna o qubit do alvo
 		#for p in range(0, len(positions)):
 		#	if positions[p][control] == "1":
 		#		print( positions[p][control])
-		#		positions[p][target]
+		#		if(positions[p][target] == "1"):
+		#			positions[p][target] = str(sqr1)
+		#		else:
+		#			positions[p][target] = str(sqr2)
   
 		#Retorna as amplitudes do qubit alvo
 		for p in range(0, len(positions)):
 			if positions[p][control] == "1":
+					print(positions[p][target])
 					print(values[p])
-					
-				#values[p] = "-" + values[p]
+					print(sqrtvar[int(positions[p][target])])
+					if(values[p] == "1"):
+						values[p] = str((1+j)/2 + (-1+j)/2)
+					else:
+						values[p] = str((-1+j)/2 + (1+j)/2)
 		return positions, values
 
 	def toffoli(self, positions, control1, control2, target):
