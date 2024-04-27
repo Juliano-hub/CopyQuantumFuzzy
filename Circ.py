@@ -365,9 +365,9 @@ class Circ:
 		sqrtvar = [[(1+j)/2, (-1+j)/2], [(-1+j)/2, (1+j)/2]]
 		for p in range(0, len(positions)):
 			if positions[p][control] == "1":
+				print(sqrtvar[target])
 				print(values[p])
 				#values[p] = "-" + values[p]
-
 		return positions, values
 
 	def toffoli(self, positions, control1, control2, target):
