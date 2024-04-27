@@ -1,5 +1,6 @@
 from math import pi as Pi
 from math import sqrt as sqrt
+from math import floor
 from cmath import exp
 import genCirc
 import numpy
@@ -359,26 +360,15 @@ class Circ:
 
 		return positions
 
-	def vGate(self, positions, control, target):
-		j = (-1)**(1/2)
-		sqrtvar = [[1+j, -1+j], [-1+j, 1+j]]
-		
-		for p in positions:
-			if p[control] == "1":
-				#for p in positions:
-					if p[target] == "1":
-						p[target] = str(sqrtvar[0])
-					else:
-						p[target] = str(sqrtvar[1])
-		#print('aqq----------')
-		#for p in positions:
-		#	print(p[control])
-		#print('aqq2----------')
-		#for p in positions:
-		#	print(p[target])
-		#print(target)
-		#print('aqqqq*---------')
-		return positions
+	def vGate(self, positions, values, control, target):
+		j = floor((-1)**(1/2))
+		sqrtvar = [[(1+j)/2, (-1+j)/2], [(-1+j)/2, (1+j)/2]]
+		for p in range(0, len(positions)):
+			if positions[p][control] == "1":
+				print(values[p])
+				#values[p] = "-" + values[p]
+
+		return positions, values
 
 	def toffoli(self, positions, control1, control2, target):
 		for p in positions:
@@ -479,7 +469,7 @@ class Circ:
 			elif par[0] == "t00":
 				pos = self.toffoli00(pos, int(par[1])-b, int(par[2])-b, int(par[3])-b)
 			elif par[0] == "vGate":
-				pos = self.vGate(pos, int(par[1])-b, int(par[2])-b)
+				pos = self.vGate(pos, val, int(par[1])-b, int(par[2])-b)
 			elif par[0] == "m":
 				m = self.measure(pos, val, int(par[1])-b, int(par[2]))
 			elif par[0] == "m2":
