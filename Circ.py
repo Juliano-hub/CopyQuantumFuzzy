@@ -361,7 +361,8 @@ class Circ:
 		return positions
 
 	def vGate(self, positions, values, control, target):
-		j = floor((-1)**(1/2))
+		#j = floor((-1)**(1/2))
+		j = (-1)**(1/2)
 		sqrtvar = [(1+j)/2, (-1+j)/2], [(-1+j)/2, (1+j)/2]
 		sqr1 = [(1+j)/2, (-1+j)/2]
 		sqr2 = [(-1+j)/2, (1+j)/2]

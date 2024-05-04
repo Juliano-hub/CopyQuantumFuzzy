@@ -25,6 +25,7 @@ class Gates:
 		self.addGate("X", [[0, 1], [1, 0]])
 		self.addGate("Z", [[1, 0], [0, -1]])
 		self.addGate("Y", [[0, 1*I], [-1*I, 0]])
+		self.addGate("V", [[(1 + (-1)**(1/2))/2, (-1 + (-1)**(1/2))/2], [(-1 + (-1)**(1/2))/2, (1 + (-1)**(1/2))/2]])
 
 	def addGate(self, name, matrix):
 		circ = self.gatesList.get(name)
