@@ -82,11 +82,11 @@ class Circ:
 		#circuitos fuzzy
 		self.fuzzy = {}
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m1,3"], entradaFuzzy]
-		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m2,3"], entradaFuzzy]
+		self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "h,3", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
-		self.fuzzy["AND"] = [2, ["pr,pv", "pr,pos", "vGate,1,2", "pr,pv", "pr,pos", "m2,2"], entradaFuzzy]
-		self.fuzzy["OR"] = [3, ["pr,pv", "p,1", "p,2", "pr,pos", "t,1,2,3", "p,3", "pr,pos", "m2,3"], entradaFuzzy]
+		#self.fuzzy["AND"] = [2, ["pr,pv", "pr,pos", "vGate,1,2", "pr,pv", "pr,pos", "m2,2"], entradaFuzzy]
+		#self.fuzzy["OR"] = [3, ["pr,pv", "p,1", "p,2", "pr,pos", "t,1,2,3", "p,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["CircFamilia1"] = [3, ["pr,pv", "pr,pos", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["CircFamilia2"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["CircFamilia3"] = [3, ["pr,pv", "pr,pos", "p,2", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
@@ -109,8 +109,9 @@ class Circ:
 		self.fuzzy["testeOverlap"] = [7, ["pr,pv", "t,1,2,5", "pr,pos", "t,3,4,6", "pr,pos", "t,5,6,7", "pr,pos", "m2,7"], entradaFuzzySquare]
 		self.fuzzy["testegrouping"] = [7, ["pr,pv", "p,1", "p,2", "t,1,2,5", "p,1", "p,2", "pr,pos", "p,3", "p,4","t,3,4,6", "p,3", "p,4", "pr,pos", "t,5,6,7", "pr,pos", "p,7", "pr,pos", "m2,7"], entradaFuzzySquare]
 		self.fuzzy["-"] = [9, ["pr,pv", "p,1", "p,2", "t,1,2,5", "p,1", "p,2", "p,3", "p,4","t,3,4,6", "p,3", "p,4", "pr,pos", "t,5,6,8", "pr,pos", "p,8", "pr,pos", "t,1,2,5", "t,3,4,6", "pr,pos", "t,5,6,7", "pr,pos", "t,7,8,9", "m2,9"], entradaFuzzySquare]
-		self.fuzzy["XorOverlapGrouping"] = [11, ["pr,pv", "p,1", "p,2", "t,1,2,5", "p,1", "p,2", "p,3", "p,4", "t,3,4,6", "p,3", "p,4", "t,5,6,7", "p,7", "pr,pos", "t,1,2,8", "t,3,4,9", "t,8,9,10", "pr,pos", "p,10", "t,7,10,11", "pr,pos", "m2,9"], entradaFuzzySquare]
-		
+		self.fuzzy["XorOverlapGrouping"] = [11, ["pr,pv", "p,1", "p,2", "t,1,2,5", "p,1", "p,2", "p,3", "p,4", "t,3,4,6", "p,3", "p,4", "t,5,6,7", "p,7", "pr,pos", "t,1,2,8", "t,3,4,9", "t,8,9,10", "pr,pos", "p,10", "t,7,10,11", "pr,pos", "m2,11"], entradaFuzzySquare]
+		self.fuzzy["XorOverlapGrouping2"] = [11, ["pr,pv", "p,1", "p,2", "t,1,2,5", "p,1", "p,2", "p,3", "p,4", "t,3,4,6", "p,3", "p,4", "t,5,6,7", "p,7", "pr,pos", "t,1,2,8", "t,3,4,9", "t,8,9,10", "pr,pos", "t,7,10,11", "p,11", "pr,pos", "m2,11"], entradaFuzzySquare]
+
 		#valores iniciais dos qubits
 		entradaIntucionista = "x1,x2,y1,y2"
 		#circuitos fuzzy intucionista

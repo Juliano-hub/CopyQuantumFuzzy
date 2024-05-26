@@ -43,7 +43,9 @@ class Interpretador:
 
 		self.operadores["eXorCoIMP-"] = "E-(x,S(N(x),N(y)))"
 		self.operadores["XORVEZES"] = "T(S(x,y),N(T(x,y)))"
-		self.operadores["XorOverlapGrouping"] = "T(G(x,y),N(O(x,y)))"
+		self.operadores["XorOverlapGrouping2"] = "T(G(x,y),N(O(x,y)))"
+		self.operadores["testeOverlap"] = "O(x,y)"
+		self.operadores["testeGrouping"] = "G(x,y)"
 	def parseOperator(self, operador, values = None):
 		op = self.operadores.get(operador)
 		if op == None:
