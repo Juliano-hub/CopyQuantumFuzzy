@@ -15,6 +15,7 @@ N = [1,[], "N"]
 
 x = [1,[], "x"]
 y = [1,[], "y"]
+z = [1,[], "z"]
 
 class Gates:
 	def __init__(self):
