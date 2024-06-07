@@ -182,10 +182,10 @@ class Simulator:
 
 	def printPosState(self):
 		for p in range (0, len(self.state)):
-			print (numpy.binary_repr(p, self.numQubits), factor(self.state[p]))
+			print (numpy.binary_repr(p, self.numQubits) + ':', factor(self.state[p]))
 
 	def printNonZeroPosState(self):
 		for p in range (0, len(self.state)):
 			if self.state[p] != 0:
-				print (numpy.binary_repr(p, self.numQubits), factor(self.state[p]))
+				print (numpy.binary_repr(p, self.numQubits) + ':', factor(self.state[p]))
 	

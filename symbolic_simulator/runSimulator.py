@@ -7,7 +7,7 @@ simulator = Simulator.Simulator()
 #simulator.createState(4, [x])
 #simulator.createState(2, [x,y])
 #simulator.createState(1, [x])
-simulator.createState(3, [x,y,0])
+simulator.createState(3, [x,y,z])
 simulator.printNonZeroPosState()
 
 print ("#######")
