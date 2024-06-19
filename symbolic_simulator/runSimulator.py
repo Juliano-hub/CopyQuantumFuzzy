@@ -21,9 +21,7 @@ print ("#######")
 #simulator.executeCircuit("V,0")
 #simulator.executeCircuit("H,0")
 
-# C-X,3-1,2-1,0
-# Applies X gate on qubit 3 if qubits 1 and 2 are 1 and 0 respectively
-
+# Porta a ser aplicada no qubit alvo, qubits controle, qubit alvo. EX: Toffoli ("C-X,0-1,2")
 simulator.executeCircuit("C-X,0-1,2")
 
 #circuito pais e filho
