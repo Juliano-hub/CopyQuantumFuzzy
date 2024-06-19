@@ -167,6 +167,9 @@ class Simulator:
 				for g in range(0, len(gatesList), 2):
 					gate = self.getGate(gatesList[g])
 					targetQubit = int(gatesList[g+1])
+					print('TARGETS:', targetQubit)
+					print('CONTROLS:', controlQubits)
+					print('CONTROL VALUES:', controlValues)
 					self.executeGate(gate, targetQubit, controlQubits, controlValues)
 
 			else:				## normal gate
