@@ -178,6 +178,8 @@ class Simulator:
 					gate = self.getGate(gatesList[g])
 					targetQubit = int(gatesList[g+1])
 					self.executeGate(gate, targetQubit)
+			self.printNonZeroPosState()
+			print('#######')
 	
 	def printState(self):
 		for p in range (0, len(self.state)):
