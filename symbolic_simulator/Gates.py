@@ -24,10 +24,12 @@ class Gates:
 		self.addGate("H", [[1/sqrt(2), 1/sqrt(2)], [1/sqrt(2), -1/sqrt(2)]])
 		self.addGate("X", [[0, 1], [1, 0]])
 		self.addGate("Z", [[1, 0], [0, -1]])
-		self.addGate("Y", [[0, 1*I], [-1*I, 0]])
+		self.addGate("Y", [[0, -1*I], [1*I, 0]])
 		# [1/2[1+i, 1-i], [1-i, 1+i]]
-		self.addGate("SX", [[(1 + I)/2, (1 -I)/2], [(1 - I)/2, (1 + I)/2]])
-
+		#self.addGate("SX", [[(1 + I)/2, (1 -I)/2], [(1 - I)/2, (1 + I)/2]])
+		ISquare = I
+		#ISquare = 1**1/2
+		self.addGate("SX", [[(1 + ISquare)/2, (1 - ISquare)/2], [(1 - ISquare)/2, (1 + ISquare)/2]])
 	def addGate(self, name, matrix):
 		circ = self.gatesList.get(name)
 		if circ != None:
