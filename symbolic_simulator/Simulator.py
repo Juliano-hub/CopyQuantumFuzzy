@@ -80,11 +80,16 @@ class Simulator:
 					break
 			self.state.append(value)
 			self.resultState.append(0)
+		#print(inputQubits)
+		print(self.state)
 
 	def getGate(self, name):
 		return self.gates.getGate(name)
 	
 	def executeGate(self, gate, targetQubit, controlQubits = None, controlValues = None):
+		print('TARGETS:', targetQubit)
+		print('CONTROLS:', controlQubits)
+		print('CONTROL VALUES:', controlValues)
 		posMask = 1 << targetQubit
 		nPosMask = ~posMask
 
@@ -148,7 +153,7 @@ class Simulator:
 		
 		if doPrint:
 			for m in range(0, totalMeasures):
-				print (numpy.binary_repr(m, numMeasureQubits), measureOutput[m])
+				print (numpy.binary_repr(m, numMeasureQubits)+":", measureOutput[m])
 
 		return measureOutput
 
@@ -167,11 +172,7 @@ class Simulator:
 				for g in range(0, len(gatesList), 2):
 					gate = self.getGate(gatesList[g])
 					targetQubit = int(gatesList[g+1])
-					print('TARGETS:', targetQubit)
-					print('CONTROLS:', controlQubits)
-					print('CONTROL VALUES:', controlValues)
 					self.executeGate(gate, targetQubit, controlQubits, controlValues)
-
 			else:				## normal gate
 				gatesList = step.split(",")
 				for g in range(0, len(gatesList), 2):

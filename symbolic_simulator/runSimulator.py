@@ -8,9 +8,12 @@ simulator = Simulator.Simulator()
 #simulator.createState(2, [x,y])
 #simulator.createState(1, [x])
 #simulator.createState(3, [x,y,0])
+#                         [2,1,0]
 #simulator.createState(2, [x,y])
-# DEVE-SE UTILIZAR 1 NOS BITS CLÁSSICOS VAZIOS, POIS ELE FAZ UMA OPERAÇÃO DE MULTIPLICAÇÃO DESSE BIT COM O ESTADO A SER COLOCADO NA POSIÇÃO
-simulator.createState(5, [x,x,1,y,1])
+# simulator.createState(5, [x,x])
+simulator.createState(5, [x,x,0,y,0])
+#simulator.createState(5, [x,x,0,y,0])
+#simulator.createState(5, [4,3,2,1,0])
 #simulator.createState(1, [1])
 simulator.printNonZeroPosState()
 
@@ -25,7 +28,7 @@ print ("#######")
 #o qubit 0 é o ultimo da lista, menos significativo
 #qubit 1 é o y e qubit 2 é o x
 #------------------------------------
-
+#simulator.executeCircuit("C-X,2-3,4") - Toffoli para 3 qubits
 #------------------------------------
 # C-NOT:
 #"C-X,CONTROLE-ALVO"
@@ -38,10 +41,10 @@ print ("#######")
 #simulator.executeCircuit("C-SX,0-1")
 
 # Circuito pais e filho modal: x^2 é armazenado no qubit 3, realiza a CRaizQuadrada entre qubit y e filho, e depois CRaizQuadrada pai^2 e filho
-#simulator.executeCircuit("C-X,0-1,3;C-SX,2-4;C-SX,3-4")
-simulator.executeCircuit("C-X,0-1,2;C-SX,2-4;C-SX,3-4")
+simulator.executeCircuit("C-X,2-3,4;C-X,0-2;C-X,0-1")
+# cnot C-X,0-2 para 5 qubits 00[Controle 0]0[Alvo 0]
 simulator.printNonZeroPosState()
-# simulator.printPosState()
+#simulator.printPosState()
 
 print ("####### Measure #######")
 # se qubits 111, simulator.measure([0], True): mede 11[1]
