@@ -41,8 +41,9 @@ print ("#######")
 #simulator.executeCircuit("C-SX,0-1")
 
 # Circuito pais e filho modal: x^2 é armazenado no qubit 3, realiza a CRaizQuadrada entre qubit y e filho, e depois CRaizQuadrada pai^2 e filho
-simulator.executeCircuit("C-X,2-3,4;C-X,0-2;C-X,0-1")
+simulator.executeCircuit("C-X,2-3,4;C-SX,0-2;C-SX,0-1")
 # cnot C-X,0-2 para 5 qubits 00[Controle 0]0[Alvo 0]
+# cnot C-X,0-1 para 5 qubits 000[Controle 0][Alvo 0]
 simulator.printNonZeroPosState()
 #simulator.printPosState()
 
