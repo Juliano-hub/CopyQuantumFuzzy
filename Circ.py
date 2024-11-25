@@ -78,10 +78,11 @@ class Circ:
 	def __init__ (self):
 		#valores iniciais dos qubits
 		#entradaFuzzy = "0.7,0.3"
-		entradaFuzzy = "x,y,z"
+		#entradaFuzzy = "x,x,0,y,0"
+		entradaFuzzy = "x,x,0,0,0"
 		#circuitos fuzzy
 		self.fuzzy = {}
-		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m1,3"], entradaFuzzy]
+		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m2,3"], entradaFuzzy]
 		self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "h,3", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
@@ -92,13 +93,15 @@ class Circ:
 		#self.fuzzy["CircFamilia3"] = [3, ["pr,pv", "pr,pos", "p,2", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["CircFamilia4"] = [3, ["pr,pv", "pr,pos", "p,1", "p,2", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		self.fuzzy["CCNOT2"] = [3, ["pr,pv", "pr,pos", "c,2,3", "pr,pos", "c,1,2","pr,pos", "m2,3"], entradaFuzzy]
+		self.fuzzy["NOVO"] = [5, ["pr,pv", "pr,pos", "t,1,2,3", "pr,pos", "c,3,5","pr,pos", "c,4,5", "m2,5"], entradaFuzzy]
 
+		
 		entradaQuiskit = "x,x,0,y,y,0"
 		self.fuzzy["CCNOT"] = [7, ["pr,pv", "t,1,2,3", "pr,pos", "p,5", "t,4,5,6", "p,5", "pr,pos", "c,6,7", "pr,pos", "c,3,7","pr,pos", "m2,7"], entradaQuiskit]
 
 		entradaClassica = "x,x,0,y"
-		self.fuzzy["Circ1"] = [3, ["pr,pv", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaClassica]
-		self.fuzzy["Circ2"] = [5, ["pr,pv", "t,1,2,3", "pr,pos", "c,4,5", "pr,pos", "c,3,5", "pr,pos", "m2,5"], entradaClassica]
+		self.fuzzy["Circ1"] = [3, ["pr,pv", "c,1,3", "pr,pos", "c,2,3", "pr,pos", "m2,3"], entradaFuzzy]
+		self.fuzzy["Circ2"] = [5, ["pr,pv", "t,1,2,3", "pr,pos", "c,4,5", "pr,pos", "c,3,5", "pr,pos", "m2,5"], entradaFuzzy]
 
 		entradaDuplicada = "x,y,x,y"
 		self.fuzzy["XORVEZES"] = [7, ["pr,pv", "p,1", "p,2", "t,1,2,5", "p,1", "p,2", "p,5", "t,3,4,6", "p,6", "t,5,6,7", "pr,pos", "m2,7"], "x,y,x,y"]

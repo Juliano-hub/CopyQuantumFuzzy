@@ -87,9 +87,9 @@ class Simulator:
 		return self.gates.getGate(name)
 	
 	def executeGate(self, gate, targetQubit, controlQubits = None, controlValues = None):
-		print('TARGETS:', targetQubit)
-		print('CONTROLS:', controlQubits)
-		print('CONTROL VALUES:', controlValues)
+		#print('TARGETS:', targetQubit)
+		#print('CONTROLS:', controlQubits)
+		#print('CONTROL VALUES:', controlValues)
 		posMask = 1 << targetQubit
 		nPosMask = ~posMask
 
