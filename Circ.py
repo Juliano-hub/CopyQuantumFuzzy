@@ -82,11 +82,11 @@ class Circ:
 		#valores iniciais dos qubits
 		#entradaFuzzy = "0.7,0.3"
 		#entradaFuzzy = "x,x,0,y,0"
-		entradaFuzzy = "x,y,0"
+		entradaFuzzy = "x,x,0,0,0"
 		#circuitos fuzzy
 		self.fuzzy = {}
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "p,1", "pr,pos", "m2,3"], entradaFuzzy]
-		self.fuzzy["AND"] = [3, ["pr,pv", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
+		self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [3, ["pr,pv", "h,3", "pr,pos", "t,1,2,3", "pr,pos", "m2,3"], entradaFuzzy]
 		#self.fuzzy["AND"] = [2, ["pr,pv", "pr,pos", "vGate,1,2", "pr,pv", "pr,pos", "m2,2"], entradaFuzzy]
