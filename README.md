@@ -25,10 +25,10 @@ A classe interpretador avalia a expressão que foi recebida. O método "func" ob
 
 ## symbolic_simulator 
 ### ./Gates
-Possuí a construção das portas quânticas do simulador algébrico.
+Possuí a construção das portas quânticas do simulador simbólico.
 
 ### ./runSimulator
-Definição do circuito quântico para o simulador algébrico.
+Definição do circuito quântico para o simulador simbólico.
 
 #### Para executar
 python runSimulator.py
