@@ -9,7 +9,7 @@ O projeto Quantum-Fuzzy busca unir as áreas de Lógica Fuzzy e Computação Qu�
 O arquivo é responsável por receber o símbolo do operador de uma expressão, com a finalidade de gerar o circuito quântico do algoritmo. É utilizado a classe circ para realizar a análise do parâmetro, assim possibilitando a descrição dos circuitos.
 
 ### Para executar
-python runCirc.py PORTA \\
+python runCirc.py PORTA <br />
 python runCirc.py AND
 
 ### ./Circ
