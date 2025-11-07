@@ -6,10 +6,12 @@ simulator = Simulator.Simulator()
 
 simulator.createState(1, [1])
 
-simulator.createState(5, [x,x,0,0,0])
+#simulator.createState(5, [x,x,0,0,0])
 #                        [4,3,2,1,0]
 simulator.printNonZeroPosState()
 
+simulator.createState(6, [0.25,0.60,0,0.70,0.90,0])
+#                        [   5,   4,3,   2,   1,0]
 print ("#######")
 
 #------------------------------------
@@ -35,11 +37,15 @@ print ("#######")
 # Circuito pais e filho modal: x^2 é armazenado no qubit 3, realiza a CRaizQuadrada entre qubit y e filho, e depois CRaizQuadrada pai^2 e filho
 #simulator.executeCircuit("X,3;C-X,2-3,4;C-SX,0-1;C-SX,0-2")
 
-simulator.executeCircuit("C-X,2-4,3;C-X,0-2;C-X,0-1")
+#simulator.executeCircuit("C-X,2-4,3;C-X,0-2;C-X,0-1")
+
+
+simulator.executeCircuit("Ry1,5;C-X,5-3;Ry2,4;C-X,4-3;Ry3,2;C-X,2-0;Ry4,1;C-X,1-0")
 
 #simulator.printNonZeroPosState()
 #simulator.printPosState()
 
 print ("####### Measure #######")
 simulator.measure([0], True)
+simulator.measure([3], True)
 # python runSimulator.py

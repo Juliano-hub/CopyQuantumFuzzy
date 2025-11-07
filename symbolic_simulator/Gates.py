@@ -4,7 +4,7 @@ from cmath import exp
 import numpy
 from sympy import *
 from sympy.interactive import init_printing
-from sympy import latex, pi, sin, asin, Integral, Matrix, Rational
+from sympy import latex, pi, sin, cos, asin, Integral, Matrix, Rational
 from sympy.abc import x, y, N, mu, r, tau
 
 x1 = [1,[], "x1"]
@@ -30,6 +30,12 @@ class Gates:
 		ISquare = I
 		#ISquare = 1**1/2
 		self.addGate("SX", [[(1 + ISquare)/2, (1 - ISquare)/2], [(1 - ISquare)/2, (1 + ISquare)/2]])
+
+		#self.addGate("Ry", [[cos(theta/2),-sin(theta/2)], [sin(theta/2),cos(theta/2)]])
+		self.addGate("Ry1", [[cos((pi/3)/2),-sin((pi/3)/2)], [sin((pi/3)/2),cos((pi/3)/2)]])
+		self.addGate("Ry2", [[cos(1.98/2),-sin(1.98/2)], [sin(1.98/2),cos(1.98/2)]])
+		self.addGate("Ry3", [[cos(1.77/2),-sin(1.77/2)], [sin(1.77/2),cos(1.77/2)]])
+		self.addGate("Ry4", [[cos(2.5/2),-sin(2.5/2)], [sin(2.5/2),cos(2.5/2)]])
 	def addGate(self, name, matrix):
 		circ = self.gatesList.get(name)
 		if circ != None:
