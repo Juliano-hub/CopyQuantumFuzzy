@@ -10,7 +10,7 @@ simulator.createState(1, [1])
 #                        [4,3,2,1,0]
 simulator.printNonZeroPosState()
 
-simulator.createState(6, [0.25,0.60,0,0.70,0.90,0])
+simulator.createState(6, [0,0.90,0.70,0,0.60,0.25])
 #                        [   5,   4,3,   2,   1,0]
 print ("#######")
 
